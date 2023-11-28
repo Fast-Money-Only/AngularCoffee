@@ -28,6 +28,13 @@ export class CakesComponent implements OnInit{
     this.service.addCake(cake).subscribe((response) => {console.log(response)})
   }
 
+  deleteCake(id: string){
+
+    this.service.deleteCake(id).subscribe(data => {console.log(data);});
+
+    let index = this.data.findIndex((x: { id: string; }) => x.id === id);
+    this.data.splice(index, 1);
+  }
 
 
   protected readonly CakeModel = CakeModel;

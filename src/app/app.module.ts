@@ -12,6 +12,7 @@ import { MembershipsComponent } from './memberships/memberships.component';
 import { OrdersComponent } from './orders/orders.component';
 import { PostsComponent } from './posts/posts.component';
 import { ProductsComponent } from './products/products.component';
+import {FormsModule} from "@angular/forms";
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { ProductsComponent } from './products/products.component';
     ProductsComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

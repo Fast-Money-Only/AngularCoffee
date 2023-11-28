@@ -1,4 +1,8 @@
 import { Component } from '@angular/core';
+import {CakeService} from "../cake.service";
+import {CakeModel} from "../cakes/Cake.Model";
+import {NgForm} from "@angular/forms";
+
 
 @Component({
   selector: 'app-products',

@@ -4,6 +4,7 @@
 <ul role="list">
   <li *ngFor="let cake of data">
     Cake: {{cake.name}}
+    <button type="button"(click)="deleteCake(cake.id)">Delete</button>
   </li>
 </ul>
 
@@ -18,3 +19,8 @@
     <button type="submit"></button>
 </form>
 </div>
+
+
+<br>
+<br>
+<br>

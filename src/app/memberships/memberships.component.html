@@ -1,1 +1,9 @@
 <p>memberships works!</p>
+
+<form #membershipForm="ngForm" (ngSubmit)="onSubmit(membershipForm)">
+
+  <label>Add new membership type: </label>
+  <input type="text"  name="name" ngModel>
+  <br>
+  <button type="submit">Add</button>
+</form>

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {CakeService} from "../cake.service";
+import {CakeService} from "../services/cake.service";
 import {CakeModel} from "./Cake.Model";
 import {NgForm} from "@angular/forms";
 import {Guid} from "guid-typescript";

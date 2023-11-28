@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders, HttpParams} from "@angular/common/http";
 import {Observable} from "rxjs";
-import {CakeModel} from "./cakes/Cake.Model";
+import {CakeModel} from "../cakes/Cake.Model";
 
 @Injectable({
   providedIn: 'root'

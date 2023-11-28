@@ -1,7 +1,9 @@
-import { Component } from '@angular/core';
-import {CakeService} from "../cake.service";
+import {Component, OnInit} from '@angular/core';
+import {CakeService} from "../services/cake.service";
 import {CakeModel} from "../cakes/Cake.Model";
 import {NgForm} from "@angular/forms";
+import {UserService} from "../services/user.service";
+import {ProductService} from "../services/product.service";
 
 
 @Component({
@@ -9,6 +11,15 @@ import {NgForm} from "@angular/forms";
   templateUrl: './products.component.html',
   styleUrls: ['./products.component.css']
 })
-export class ProductsComponent {
+export class ProductsComponent implements OnInit{
+  data: any;
 
+
+  constructor(private service: ProductService) {
+  }
+
+  ngOnInit(): void {
+    this.service.getProducts().subscribe(data => this.data = data);
+    console.log(this.data);
+  }
 }

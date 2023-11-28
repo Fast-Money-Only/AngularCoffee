@@ -1,14 +1,14 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Observable} from "rxjs";
-import {UserModel} from "./users/User.Model";
+import {UserModel} from "../users/User.Model";
 
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
-  private baseUrl :string = "http://localhost:5056/ape/User";
+  private baseUrl :string = "http://localhost:5056/api/User";
 
   constructor(private http: HttpClient) { }
 
@@ -17,7 +17,7 @@ export class UserService {
   }
 
   getUser(id: string): Observable<Object>{
-    return this.http.get(this.baseUrl + "/getUser/" + id);
+    return this.http.get(this.baseUrl + id);
   }
 
   updateUser(id: string, user: UserModel): Observable<Object>{

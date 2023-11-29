@@ -25,6 +25,13 @@ export class AddressesComponent {
     this.service.addAddress(address).subscribe((response) => {console.log(response)})
   }
 
+  deleteAddress(id: string){
+
+    id = "c9408700-b623-43b2-4dc4-40edd44033e7";
+
+    this.service.deleteAddress(id).subscribe(data => {console.log(data);});
+  }
+
 
 
 }

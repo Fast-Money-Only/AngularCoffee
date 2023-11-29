@@ -22,6 +22,10 @@ export class CoffeeService {
     return this.http.get(this.baseUrl + "/GetCoffees")
   }
 
+  getAllCoffeeIngredients() : Observable<Object>{
+    return this.http.get(this.baseUrl + "/CoffeeIngredients")
+  }
+
   findCoffee(id: string) : Observable<Object>{
     return this.http.get(this.baseUrl + "/" + id)
   }

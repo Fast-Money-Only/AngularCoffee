@@ -1,1 +1,75 @@
 <p>coffees works!</p>
+
+
+<ul role="list">
+  <li *ngFor="let coffee of data">
+    Coffee: {{coffee.name}}
+  </li>
+</ul>
+
+<br>
+<br>
+
+<div>
+  <form #coffeeForm="ngForm" (ngSubmit)="addCoffee(coffeeForm)">
+
+    <label>Insert coffee name : </label>
+    <input type="text" id="addcoffee" name="name" ngModel>
+    <br>
+    <button type="submit">Add coffee</button>
+  </form>
+</div>
+
+<br>
+<br>
+
+<div>
+  <form #coffeeIngredientForm="ngForm" (ngSubmit)="addCoffeeIngredient(coffeeIngredientForm)">
+
+    <label>Insert ingredient: </label>
+    <input type="text" id="ingredientid" name="name" ngModel>
+    <br>
+    <label>Insert coffee: </label>
+    <input type="text" id="coffeeid" name="name" ngModel>
+    <br>
+    <button type="submit">Add ingredient to coffee</button>
+  </form>
+</div>
+
+<br>
+<br>
+
+<div>
+  <form #coffeeCakeForm="ngForm" (ngSubmit)="addCoffeeCake(coffeeCakeForm)">
+
+    <label>Insert cake: </label>
+    <input type="text" id="cakeid" name="name" ngModel>
+    <br>
+    <label>Insert coffee: </label>
+    <input type="text" id="coffeeid2" name="name" ngModel>
+    <br>
+    <button type="submit">Add ingredient to coffee</button>
+  </form>
+</div>
+
+<br>
+<br>
+
+<div>
+  <form #findCoffeeIngredientForm="ngForm" (ngSubmit)="findCoffeeIngredient(findCoffeeIngredientForm)">
+
+    <label>Find Ingredients in coffee. Insert coffeeid: </label>
+    <input type="text" id="cofid1" name="name" ngModel>
+    <br>
+
+
+    <button type="submit">Find</button>
+
+    <ul role="list">
+      <li *ngFor="let coffeeIngredient of coffeeIngredients">
+        Ingredient: {{coffeeIngredient.id}}
+      </li>
+    </ul>
+
+  </form>
+</div>

@@ -13,3 +13,16 @@
     </mat-card>
 </div>
 
+<div>
+    <form #postForm="ngForm" (ngSubmit)="onSubmit(postForm)">
+        <label>Add post</label>
+        <br>
+        <label>Give your post a title</label>
+        <input type="text" name="title" ngModel>
+        <br>
+        <input type="file"  name="img" accept="image/*" ngModel>
+        <br>
+        <input type="submit">
+    </form>
+</div>
+

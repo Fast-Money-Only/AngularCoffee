@@ -15,6 +15,9 @@ import { ProductsComponent } from './products/products.component';
 import {FormsModule} from "@angular/forms";
 import {HttpClientModule} from "@angular/common/http";
 import {AppRoutingModule} from "./app-routing.module";
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import {MatCardModule} from "@angular/material/card";
+import {MatButtonModule} from "@angular/material/button";
 
 @NgModule({
   declarations: [
@@ -30,12 +33,15 @@ import {AppRoutingModule} from "./app-routing.module";
     PostsComponent,
     ProductsComponent
   ],
-  imports: [
-    BrowserModule,
-    FormsModule,
-    AppRoutingModule,
-    HttpClientModule
-  ],
+    imports: [
+        BrowserModule,
+        FormsModule,
+        AppRoutingModule,
+        HttpClientModule,
+        NoopAnimationsModule,
+        MatCardModule,
+        MatButtonModule
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })

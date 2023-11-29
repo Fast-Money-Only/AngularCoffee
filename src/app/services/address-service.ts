@@ -17,6 +17,9 @@ export class AddressService {
     return this.http.post(this.baseUrl, address)
   }
 
+  deleteAddress(id: string) : Observable<any>{
+    return this.http.delete(this.baseUrl + "/" + id);
+  }
 
 
 

@@ -22,7 +22,7 @@ export class CakeService {
 
 
   deleteCake(id: string) : Observable<any>{
-    return this.http.post(this.baseUrl, id)
+    return this.http.delete(this.baseUrl + "/" + id)
   }
 
 

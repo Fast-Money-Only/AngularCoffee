@@ -1,5 +1,13 @@
 <p>orders works!</p>
 
+<div class="gridDisplay">
+    <mat-card *ngFor="let order of data">
+        <mat-card-header>
+            <mat-card-title>Ordre id:</mat-card-title>
+            <mat-card-subtitle>{{order.id}}</mat-card-subtitle>
+        </mat-card-header>
+    </mat-card>
+</div>
 <form #orderForm="ngForm" (ngSubmit)="createOrder(orderForm)">
 
     <label>Create order: </label>

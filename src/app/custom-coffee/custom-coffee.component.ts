@@ -25,10 +25,8 @@ export class CustomCoffeeComponent {
 
   findCustomCoffee(findCustomCoffeeForm: any){
     let x = findCustomCoffeeForm.value.coffeeid;
-    this.service.findCustomCoffee(x).subscribe((response) =>
-    {
-      this.customCoffee = response;
-      console.log(response)});
+    this.service.findCustomCoffee(x).subscribe(customCoffee => this.customCoffee = customCoffee);
+
   }
 
 

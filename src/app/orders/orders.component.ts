@@ -5,6 +5,7 @@ import {NgForm} from "@angular/forms";
 import {OrderModel} from "./order.Model";
 import {CoffeeModel} from "../coffees/Coffee.Model";
 import {CoffeePlaceModel} from "../coffee-places/coffeePlace.Model";
+import {dateTimestampProvider} from "rxjs/internal/scheduler/dateTimestampProvider";
 
 @Component({
   selector: 'app-orders',
@@ -14,7 +15,7 @@ import {CoffeePlaceModel} from "../coffee-places/coffeePlace.Model";
 export class OrdersComponent implements OnInit {
   data: any;
   coffeePlaces: any;
-  selectedPlace: any;
+  selectedPlace!: string;
 
 
   constructor(private service: OrderService) {
@@ -28,15 +29,16 @@ export class OrdersComponent implements OnInit {
 
   createOrder(orderForm: NgForm) {
     let order = new OrderModel();
-    order.pickup = orderForm.value.pickup;
-    order.coffeePlaceId = this.selectedPlace;
+    let time = Date.parse(orderForm.value.pickup)
+    //order.pickup = time.toString();
+    //order.coffeePlaceId = this.selectedPlace;
     order.userId = "5a217f9c-95f9-422a-aa32-fe970a70f946";
+    console.log(order);
     this.service.addOrder(order)
         .subscribe((response) => {console.log(response)});
   }
 
   onSelected(value: string) {
-    this.service.getPlace(value)
-        .subscribe(selectedPlace => this.selectedPlace = selectedPlace);
+    this.selectedPlace = value;
   }
 }

@@ -28,11 +28,11 @@ export class OrderService {
     return this.http.get(this.baseUrl + id);
   }
 
-  addOrder(order: OrderModel): Observable<any>{
+  addOrder(order: OrderModel): Observable<any> {
     return this.http.post(this.baseUrl, order);
   }
 
   getUserOrders(id: string) : Observable<Object>{
-    return this.http.get(this.baseUrl + "/Get user orders" + id)
+    return this.http.get(this.baseUrl + "/GetUserOrders/" + id)
   }
 }

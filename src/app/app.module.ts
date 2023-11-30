@@ -18,6 +18,7 @@ import {AppRoutingModule} from "./app-routing.module";
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import {MatCardModule} from "@angular/material/card";
 import {MatButtonModule} from "@angular/material/button";
+import { CustomCoffeeComponent } from './custom-coffee/custom-coffee.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import {MatButtonModule} from "@angular/material/button";
     MembershipsComponent,
     OrdersComponent,
     PostsComponent,
-    ProductsComponent
+    ProductsComponent,
+    CustomCoffeeComponent
   ],
     imports: [
         BrowserModule,

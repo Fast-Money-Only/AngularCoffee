@@ -46,8 +46,8 @@ export class CoffeesComponent implements OnInit{
   addCoffeeCake(coffeeCakeForm: any): void{
     let coffeeCake = new CoffeeCakeModel();
     coffeeCake.id = Guid.create().toString();
-    coffeeCake.cakeid = coffeeCakeForm.value.cakeid;
-    coffeeCake.coffeeid = coffeeCakeForm.value.coffeeid;
+    coffeeCake.cakeid = coffeeCakeForm.value.cakeid2;
+    coffeeCake.coffeeid = coffeeCakeForm.value.coffeeid2;
 
     this.service.addCakeToCoffee(coffeeCake).subscribe((response) => {console.log(response)})
   }
@@ -60,14 +60,13 @@ export class CoffeesComponent implements OnInit{
 
   findCoffeeIngredient(findCoffeeIngredientForm: any){
     let coffee = new CoffeeModel();
-    coffee.id = findCoffeeIngredientForm.value.name;
+    coffee.id = findCoffeeIngredientForm.value.coffeeid;
     this.service.findCoffeeIngredients(coffee.id).subscribe(coffeeIngredients => this.coffeeIngredients = coffeeIngredients);
   }
 
   findCoffeeCake(findCoffeeCakeForm: any){
     let coffee = new CoffeeModel();
     coffee.id = findCoffeeCakeForm.value.name;
-    this.service.findCoffeeCake(coffee.id).subscribe((response) =>
-    { console.log(response)});
+    this.service.findCoffeeCake(coffee.id).subscribe(coffeeCakes => this.coffeeCakes = coffeeCakes);
   }
 }

@@ -43,12 +43,12 @@
   <form #coffeeCakeForm="ngForm" (ngSubmit)="addCoffeeCake(coffeeCakeForm)">
 
     <label>Insert cake: </label>
-    <input type="text" id="cakeid" name="name" ngModel>
+    <input type="text" id="cakeid" name="cakeid2" ngModel>
     <br>
     <label>Insert coffee: </label>
-    <input type="text" id="coffeeid2" name="name" ngModel>
+    <input type="text" id="coffeeid2" name="coffeeid2" ngModel>
     <br>
-    <button type="submit">Add ingredient to coffee</button>
+    <button type="submit">Add cake to coffee</button>
   </form>
 </div>
 
@@ -59,7 +59,7 @@
   <form #findCoffeeIngredientForm="ngForm" (ngSubmit)="findCoffeeIngredient(findCoffeeIngredientForm)">
 
     <label>Find Ingredients in coffee. Insert coffeeid: </label>
-    <input type="text" id="cofid1" name="name" ngModel>
+    <input type="text" name="coffeeid" ngModel>
     <br>
 
 
@@ -71,14 +71,13 @@
       </li>
     </ul>
   </form>
-
 </div>
 
 <br>
 <div>
   <form #findCoffeeCakeForm="ngForm" (ngSubmit)="findCoffeeCake(findCoffeeCakeForm)">
 
-    <label>Find Ingredients in coffee. Insert coffeeid: </label>
+    <label>Find cake in that belongs to coffee. Insert coffeeid: </label>
     <input type="text" name="name" ngModel>
     <br>
 

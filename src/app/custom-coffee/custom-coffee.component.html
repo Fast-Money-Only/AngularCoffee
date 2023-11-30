@@ -1,0 +1,32 @@
+<p>custom-coffee works!</p>
+
+
+<div>
+  <form #customCoffeeForm="ngForm" (ngSubmit)="addCustomCoffee(customCoffeeForm)">
+
+    <label>Insert coffee name : </label>
+    <input type="text" id="addcoffee" name="name" ngModel>
+    <br>
+    <button type="submit">Add custom coffee</button>
+  </form>
+</div>
+
+<br>
+<br>
+
+<div>
+  <form #findCustomCoffeeForm="ngForm" (ngSubmit)="findCustomCoffee(findCustomCoffeeForm)">
+
+    <label>Find a custom coffee. Insert coffeeid: </label>
+    <input type="text" name="coffeeid" ngModel>
+    <br>
+
+
+    <button type="submit">Find</button>
+    <br>
+    <br>
+
+    <label> Name of custom coffee: {{customCoffee.name}}</label>
+
+  </form>
+</div>

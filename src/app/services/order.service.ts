@@ -16,6 +16,14 @@ export class OrderService {
     return this.http.get(this.baseUrl + "/GetOrders");
   }
 
+  getCoffeePlaces() : Observable<Object>{
+    return this.http.get("http://localhost:5056/api/CoffeePlace/GetCoffeePlaces");
+  }
+
+  getPlace(id: string) : Observable<Object>{
+    return this.http.get("http://localhost:5056/api/CoffeePlace/" + id);
+  }
+
   getOrder(id: string): Observable<Object>{
     return this.http.get(this.baseUrl + id);
   }

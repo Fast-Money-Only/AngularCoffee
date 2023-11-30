@@ -23,7 +23,7 @@ export class CoffeesComponent implements OnInit{
 
 
   ngOnInit(): void{
-    this.service.getAllCoffees().subscribe(data => this.data = data)
+    this.service.getAllCoffees().subscribe(data => this.data = data);
   }
 
   addCoffee(coffeeForm: any): void{

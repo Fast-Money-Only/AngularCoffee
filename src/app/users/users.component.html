@@ -1,7 +1,29 @@
 <p>users works!</p>
 
-<ul role="list">
+<ul>
   <li  *ngFor="let user of data">
-    Hej: {{user.firstname}}
+    Hej {{user.firstname}}
   </li>
 </ul>
+
+<br>
+
+<div>
+  <form #findUserOrdersForm="ngForm" (ngSubmit)="findUserOrders(findUserOrdersForm)">
+
+    <label>Find orders for specified user. Insert userID: </label>
+    <input type="text" name="name" ngModel>
+    <br>
+
+    <button type="submit">Find</button>
+
+  </form>
+  <ul role="list" *ngFor="let order of userOrdersData">
+    <li >
+      Order for: {{userData}}
+    </li>
+    <li>
+      Created: {{order.created}}
+    </li>
+  </ul>
+</div>

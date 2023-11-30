@@ -17,7 +17,7 @@ export class UserService {
   }
 
   getUser(id: string): Observable<Object>{
-    return this.http.get(this.baseUrl + id);
+    return this.http.get(this.baseUrl + "/" + id);
   }
 
   updateUser(id: string, user: UserModel): Observable<Object>{
@@ -33,7 +33,7 @@ export class UserService {
   }
 
   getUserOrders(id: string): Observable<Object>{
-    return this.http.get(this.baseUrl + "/Get user orders/" + id);
+    return this.http.get(this.baseUrl + "/GetUserOrders/" + id);
   }
 
 

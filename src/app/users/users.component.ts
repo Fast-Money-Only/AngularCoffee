@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {UserService} from "../services/user.service";
+import {NgForm} from "@angular/forms";
 import {UserModel} from "./User.Model";
 
 @Component({
@@ -9,12 +10,24 @@ import {UserModel} from "./User.Model";
 })
 export class UsersComponent implements OnInit{
   data: any;
+  userData: any;
+  userOrdersData: any;
 
   constructor(private service: UserService) {
   }
 
   ngOnInit(): void {
     this.service.getUsers().subscribe(data => this.data = data);
-    console.log(this.data);
+  }
+
+  getUser(id: string): void {
+    this.service.getUser(id).subscribe(userData => this.userData = userData);
+  }
+
+
+  findUserOrders(findUserOrdersForm: NgForm) {
+    this.getUser(findUserOrdersForm.value.name);
+    this.service.getUserOrders(findUserOrdersForm.value.name)
+        .subscribe(userOrdersData => this.userOrdersData = userOrdersData);
   }
 }

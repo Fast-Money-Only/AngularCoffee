@@ -66,10 +66,30 @@
     <button type="submit">Find</button>
 
     <ul role="list">
-      <li *ngFor="let coffeeIngredient of coffeeIngredients">
-        Ingredient: {{coffeeIngredient.id}}
+      <li *ngFor="let coffeeIngredient of coffeeIngredients" >
+        Ingredient: {{coffeeIngredient.name}}
       </li>
     </ul>
-
   </form>
+
 </div>
+
+<br>
+<div>
+  <form #findCoffeeCakeForm="ngForm" (ngSubmit)="findCoffeeCake(findCoffeeCakeForm)">
+
+    <label>Find Ingredients in coffee. Insert coffeeid: </label>
+    <input type="text" name="name" ngModel>
+    <br>
+
+    <button type="submit">Find</button>
+
+    <ul role="list">
+      <li *ngFor="let coffeeCake of coffeeCakes" >
+        Ingredient: {{coffeeCake.name}}
+      </li>
+    </ul>
+  </form>
+
+</div>
+

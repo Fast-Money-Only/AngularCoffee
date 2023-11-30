@@ -4,6 +4,7 @@ import {CoffeeModel} from "./Coffee.Model";
 import {CoffeeCakeModel} from "../coffee-cake/Coffee-Cake.Model";
 import {CoffeeIngredientModel} from "../coffee-ingredient/Coffee-Ingredient.Model";
 import {Guid} from "guid-typescript";
+import {IngredientModel} from "../ingredients/Ingredient.Model";
 
 
 @Component({
@@ -15,6 +16,7 @@ export class CoffeesComponent implements OnInit{
 
   data: any;
   coffeeIngredients: any;
+  coffeeCakes: any;
 
   constructor(private service: CoffeeService) {
   }
@@ -22,10 +24,6 @@ export class CoffeesComponent implements OnInit{
 
   ngOnInit(): void{
     this.service.getAllCoffees().subscribe(data => this.data = data)
-  }
-
-  findAllCoffeeIngredients(){
-    this.service.getAllCoffeeIngredients().subscribe(coffeeIngredients => this.coffeeIngredients = coffeeIngredients);
   }
 
   addCoffee(coffeeForm: any): void{
@@ -61,14 +59,15 @@ export class CoffeesComponent implements OnInit{
   }
 
   findCoffeeIngredient(findCoffeeIngredientForm: any){
-    let x = findCoffeeIngredientForm.value.coffeeid;
-    this.service.findCoffeeIngredients(x).subscribe((response) =>
-    { console.log(response)}), this.findAllCoffeeIngredients();
+    let coffee = new CoffeeModel();
+    coffee.id = findCoffeeIngredientForm.value.name;
+    this.service.findCoffeeIngredients(coffee.id).subscribe(coffeeIngredients => this.coffeeIngredients = coffeeIngredients);
   }
 
   findCoffeeCake(findCoffeeCakeForm: any){
-    let x = findCoffeeCakeForm.value.coffeeid;
-    this.service.findCoffeeCake(x).subscribe((response) =>
+    let coffee = new CoffeeModel();
+    coffee.id = findCoffeeCakeForm.value.name;
+    this.service.findCoffeeCake(coffee.id).subscribe((response) =>
     { console.log(response)});
   }
 }

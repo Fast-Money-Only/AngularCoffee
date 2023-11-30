@@ -1,1 +1,19 @@
 <p>ingredients works!</p>
+
+<ul role="list">
+    <li *ngFor="let ingr of data">
+        Ingredient: {{ingr.name}}
+        <button type="button"(click)="deleteIngredient(ingr.id)">Delete</button>
+    </li>
+</ul>
+
+<div>
+    <form #ingredientForm="ngForm" (ngSubmit)="onSubmit(ingredientForm)">
+
+        <label>Add ingredient: </label>
+        <input type="text" id="id" name="name" ngModel>
+        <br>
+
+        <button type="submit">Add</button>
+    </form>
+</div>

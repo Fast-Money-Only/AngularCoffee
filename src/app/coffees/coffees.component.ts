@@ -5,6 +5,8 @@ import {CoffeeCakeModel} from "../coffee-cake/Coffee-Cake.Model";
 import {CoffeeIngredientModel} from "../coffee-ingredient/Coffee-Ingredient.Model";
 import {Guid} from "guid-typescript";
 import {IngredientModel} from "../ingredients/Ingredient.Model";
+import {CakeService} from "../services/cake.service";
+import {IngredientService} from "../services/ingredient.service";
 
 
 @Component({
@@ -17,13 +19,24 @@ export class CoffeesComponent implements OnInit{
   data: any;
   coffeeIngredients: any;
   coffeeCakes: any;
+  cakeData: any;
+  ingrData: any;
+  selectedCoffee!: string;
+  selectedCake!: string;
+  selectedIngr!: string;
 
-  constructor(private service: CoffeeService) {
+
+
+  constructor(private service: CoffeeService,
+              private cakeService: CakeService,
+              private ingrService: IngredientService) {
   }
 
 
   ngOnInit(): void{
     this.service.getAllCoffees().subscribe(data => this.data = data);
+    this.cakeService.getCakes().subscribe(cakeData => this.cakeData = cakeData);
+    this.ingrService.getIngredients().subscribe(ingrData => this.ingrData = ingrData);
   }
 
   addCoffee(coffeeForm: any): void{
@@ -37,8 +50,8 @@ export class CoffeesComponent implements OnInit{
   addCoffeeIngredient(coffeeIngredientForm: any): void{
     let coffeeIngredient = new CoffeeIngredientModel();
     coffeeIngredient.id = Guid.create().toString();
-    coffeeIngredient.ingredientid = coffeeIngredientForm.value.ingredientid;
-    coffeeIngredient.coffeeid = coffeeIngredientForm.value.coffeeid;
+    coffeeIngredient.ingredientid = this.selectedIngr;
+    coffeeIngredient.coffeeid = this.selectedCoffee;
 
     this.service.addIngredientToCoffee(coffeeIngredient).subscribe((response) => {console.log(response)})
   }
@@ -46,10 +59,10 @@ export class CoffeesComponent implements OnInit{
   addCoffeeCake(coffeeCakeForm: any): void{
     let coffeeCake = new CoffeeCakeModel();
     coffeeCake.id = Guid.create().toString();
-    coffeeCake.cakeid = coffeeCakeForm.value.cakeid2;
-    coffeeCake.coffeeid = coffeeCakeForm.value.coffeeid2;
+    coffeeCake.cakeid = this.selectedCake;
+    coffeeCake.coffeeid = this.selectedCoffee;
 
-    this.service.addCakeToCoffee(coffeeCake).subscribe((response) => {console.log(response)})
+    this.service.addCakeToCoffee(coffeeCake).subscribe((response) => {console.log(response); this.ngOnInit()})
   }
 
   findCoffee(findCoffeeForm: any){
@@ -59,14 +72,22 @@ export class CoffeesComponent implements OnInit{
   }
 
   findCoffeeIngredient(findCoffeeIngredientForm: any){
-    let coffee = new CoffeeModel();
-    coffee.id = findCoffeeIngredientForm.value.coffeeid;
-    this.service.findCoffeeIngredients(coffee.id).subscribe(coffeeIngredients => this.coffeeIngredients = coffeeIngredients);
+    this.service.findCoffeeIngredients(this.selectedCoffee).subscribe(coffeeIngredients => this.coffeeIngredients = coffeeIngredients);
   }
 
   findCoffeeCake(findCoffeeCakeForm: any){
-    let coffee = new CoffeeModel();
-    coffee.id = findCoffeeCakeForm.value.name;
-    this.service.findCoffeeCake(coffee.id).subscribe(coffeeCakes => this.coffeeCakes = coffeeCakes);
+    this.service.findCoffeeCake(this.selectedCoffee).subscribe(coffeeCakes => this.coffeeCakes = coffeeCakes);
+  }
+
+  onSelected(value: string) {
+    this.selectedCoffee = value;
+  }
+
+  onSelectedCake(value: string) {
+    this.selectedCake = value;
+  }
+
+  onSelectedIngredient(value: string) {
+    this.selectedIngr = value;
   }
 }

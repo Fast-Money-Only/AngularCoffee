@@ -26,11 +26,17 @@
 <div>
   <form #coffeeIngredientForm="ngForm" (ngSubmit)="addCoffeeIngredient(coffeeIngredientForm)">
 
-    <label>Insert ingredient: </label>
-    <input type="text" id="ingredientid" name="name" ngModel>
+    <label>Choose ingredient: </label>
+    <select #selectIngredient  (change)="onSelectedIngredient(selectIngredient.value)" >
+      <option >Pick an Ingredient</option>
+      <option *ngFor="let ingr of ingrData" value="{{ingr.id}}">{{ingr.name}}</option>
+    </select>
     <br>
-    <label>Insert coffee: </label>
-    <input type="text" id="coffeeid" name="name" ngModel>
+    <label>Choose coffee: </label>
+    <select #selectCoffee3  (change)="onSelected(selectCoffee3.value)" >
+      <option >Pick a coffee</option>
+      <option *ngFor="let coffee of data" value="{{coffee.id}}">{{coffee.name}}</option>
+    </select>
     <br>
     <button type="submit">Add ingredient to coffee</button>
   </form>
@@ -43,10 +49,16 @@
   <form #coffeeCakeForm="ngForm" (ngSubmit)="addCoffeeCake(coffeeCakeForm)">
 
     <label>Insert cake: </label>
-    <input type="text" id="cakeid" name="cakeid2" ngModel>
+    <select #selectCake  (change)="onSelectedCake(selectCake.value)" >
+      <option >Pick a cake</option>
+      <option *ngFor="let cake of cakeData" value="{{cake.id}}">{{cake.name}}</option>
+    </select>
     <br>
-    <label>Insert coffee: </label>
-    <input type="text" id="coffeeid2" name="coffeeid2" ngModel>
+    <label>Choose coffee: </label>
+    <select #selectCoffee2  (change)="onSelected(selectCoffee2.value)" >
+      <option >Pick a coffee</option>
+      <option *ngFor="let coffee of data" value="{{coffee.id}}">{{coffee.name}}</option>
+    </select>
     <br>
     <button type="submit">Add cake to coffee</button>
   </form>
@@ -59,9 +71,11 @@
   <form #findCoffeeIngredientForm="ngForm" (ngSubmit)="findCoffeeIngredient(findCoffeeIngredientForm)">
 
     <label>Find Ingredients in coffee. Insert coffeeid: </label>
-    <input type="text" name="coffeeid" ngModel>
+    <select #selectCoffee  (change)="onSelected(selectCoffee.value)" >
+      <option >Pick a coffee</option>
+      <option *ngFor="let coffee of data" value="{{coffee.id}}">{{coffee.name}}</option>
+    </select>
     <br>
-
 
     <button type="submit">Find</button>
 
@@ -77,15 +91,18 @@
 <div>
   <form #findCoffeeCakeForm="ngForm" (ngSubmit)="findCoffeeCake(findCoffeeCakeForm)">
 
-    <label>Find cake in that belongs to coffee. Insert coffeeid: </label>
-    <input type="text" name="name" ngModel>
+    <label>Find cake that belongs to coffee </label>
+    <select #selectCoffee1  (change)="onSelected(selectCoffee1.value)" >
+      <option >Pick a coffee</option>
+      <option *ngFor="let coffee of data" value="{{coffee.id}}">{{coffee.name}}</option>
+    </select>
     <br>
 
     <button type="submit">Find</button>
 
     <ul role="list">
       <li *ngFor="let coffeeCake of coffeeCakes" >
-        Ingredient: {{coffeeCake.name}}
+        Cake: {{coffeeCake.name}}
       </li>
     </ul>
   </form>

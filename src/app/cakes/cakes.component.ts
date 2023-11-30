@@ -22,10 +22,9 @@ export class CakesComponent implements OnInit{
 
   onSubmit(cakeForm: any): void{
     let cake = new CakeModel();
-    cake.id = Guid.create().toString();
     cake.name = cakeForm.value.name;
 
-    this.service.addCake(cake).subscribe((response) => {console.log(response)})
+    this.service.addCake(cake).subscribe((response) => {console.log(response); this.ngOnInit()})
   }
 
   deleteCake(id: string){

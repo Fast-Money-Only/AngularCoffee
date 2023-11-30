@@ -67,7 +67,6 @@ export class CoffeesComponent implements OnInit{
   findCoffeeCake(findCoffeeCakeForm: any){
     let coffee = new CoffeeModel();
     coffee.id = findCoffeeCakeForm.value.name;
-    this.service.findCoffeeCake(coffee.id).subscribe((response) =>
-    { console.log(response)});
+    this.service.findCoffeeCake(coffee.id).subscribe(coffeeCakes => this.coffeeCakes = coffeeCakes);
   }
 }

@@ -4,6 +4,8 @@ import {CakeModel} from "../cakes/Cake.Model";
 import {NgForm} from "@angular/forms";
 import {UserService} from "../services/user.service";
 import {ProductService} from "../services/product.service";
+import {IngredientModel} from "../ingredients/Ingredient.Model";
+import {ProductModel} from "./product.Model";
 
 
 @Component({
@@ -22,4 +24,22 @@ export class ProductsComponent implements OnInit{
     this.service.getProducts().subscribe(data => this.data = data);
     console.log(this.data);
   }
+
+  onSubmit(productForm: NgForm) {
+    let product = new ProductModel();
+    product.productName = productForm.value.name;
+    product.productNumber = productForm.value.prodid;
+
+    this.service.addProduct(product).subscribe((response) => {console.log(response); this.ngOnInit()})
+  }
+
+  deleteProduct(id: string) {
+    this.service.deleteProduct(id).subscribe((response) =>
+    {console.log(response), this.ngOnInit()});
+  }
+
+
+
+
+
 }

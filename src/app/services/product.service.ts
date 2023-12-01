@@ -8,7 +8,7 @@ import {ProductModel} from "../products/product.Model";
   providedIn: 'root'
 })
 export class ProductService {
-  private baseUrl :string = "http://localhost:5056/api/product";
+  private baseUrl :string = "http://localhost:5056/api/Product";
 
   constructor(private http: HttpClient) { }
 
@@ -20,7 +20,7 @@ export class ProductService {
     return this.http.get(this.baseUrl + "/" + id);
   }
 
-  deleteProduct(id: string) : Observable<Object>{
+  deleteProduct(id: string) : Observable<any>{
     return this.http.delete(this.baseUrl + "/" + id);
   }
 

@@ -13,11 +13,14 @@ export class AddressService {
 
   constructor(private http: HttpClient) { }
 
+  getAddress(id: string) : Observable<Object> {
+    return this.http.get(this.baseUrl + "/" + id)
+  }
   addAddress(address: AddressModel) : Observable<any>{
     return this.http.post(this.baseUrl, address)
   }
 
-  deleteAddress(id: string) : Observable<any>{
+  deleteAddress(id: string) : Observable<Object>{
     return this.http.delete(this.baseUrl + "/" + id);
   }
 

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {AddressService} from "../services/address-service";
 import {AddressModel} from "./Address.Model";
 import {NgForm} from "@angular/forms";
@@ -9,28 +9,38 @@ import {Guid} from "guid-typescript";
   templateUrl: './addresses.component.html',
   styleUrls: ['./addresses.component.css']
 })
-export class AddressesComponent {
+export class AddressesComponent implements OnInit{
+  data: any;
+  aId!: string;
 
   constructor(private service: AddressService) {
   }
 
+  ngOnInit(): void {
+    this.service.getAddress("35c7ceda-15ac-44b1-8863-ce2975a04f2e").subscribe(data => this.data = data);
+  }
+
+  getAddress(findForm: any){
+    this.aId = findForm.value.id;
+    this.service.getAddress(this.aId).subscribe(data => this.data = data);
+  }
+
   onSubmit(addressForm: any): void{
     let address = new AddressModel();
-    address.addressId = Guid.create().toString();
-    address.streetName = "Hejsa"; //addressForm.value.streetName;
-    address.houseNumber = "Hej pernille";//addressForm.value.houseNumber;
-    address.cityName = "Perniiiiiiiiille";//addressForm.value.cityName;
-    address.postNumber = 5;//addressForm.value.postNumber;
+    address.streetName = addressForm.value.street;
+    address.houseNumber = addressForm.value.house;
+    address.cityName = addressForm.value.city;
+    address.postNumber = addressForm.value.postal;
 
     this.service.addAddress(address).subscribe((response) => {console.log(response)})
   }
 
-  deleteAddress(id: string){
-
-    id = "c9408700-b623-43b2-4dc4-40edd44033e7";
-
-    this.service.deleteAddress(id).subscribe(data => {console.log(data);});
+  deleteAddress(){
+    console.log(this.aId);
+    this.service.deleteAddress(this.aId).subscribe((response) =>
+    {console.log(response), this.ngOnInit()});
   }
+
 
 
 

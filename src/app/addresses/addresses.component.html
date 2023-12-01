@@ -1,8 +1,37 @@
 <p>addresses works!</p>
 
+<form #findForm="ngForm" (ngSubmit)="getAddress(findForm)">
+  <label>Find adrress from id: </label>
+  <input type="text" name="id" ngModel>
+  <button type="submit">Find addresse</button>
+</form>
+
+<div class="gridDisplay">
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>{{data.streetName + " " + data.houseNumber}}</mat-card-title>
+      <mat-card-subtitle>{{data.cityName + " " + data.postNumber}}</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-actions>
+      <button (click)="deleteAddress()" >DELETE ADDRESS</button>
+    </mat-card-actions>
+  </mat-card>
+</div>
 
 <form #addressForm="ngForm" (ngSubmit)="onSubmit(addressForm)">
+  <label>Streetname: </label>
+  <input type="text" name="street" ngModel>
+  <br>
+  <label>houseNumber: </label>
+  <input type="text" name="house" ngModel>
+  <br>
+  <label>Cityname: </label>
+  <input type="text" name="city" ngModel>
+  <br>
+  <label>Postalcode: </label>
+  <input type="text" name="postal" ngModel>
+
   <button type="submit"> ADD DA ADDRESS </button>
 </form>
 
-<button (click)="deleteAddress('c9408700-b623-43b2-4dc4-40edd44033e7')"> DELETE ADDRESS</button>
+

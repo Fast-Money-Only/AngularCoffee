@@ -5,7 +5,7 @@
 <ul role="list">
   <li *ngFor="let product of data">
     Product: {{product.productName}}
-    <button type="button"(click)="deleteProduct(product.id)">Delete</button>
+    <button type="button"(click)="deleteProduct(product.productId)">Delete</button>
   </li>
 </ul>
 

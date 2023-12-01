@@ -27,8 +27,8 @@ export class ProductsComponent implements OnInit{
 
   onSubmit(productForm: NgForm) {
     let product = new ProductModel();
-    product.productName = productForm.value.name;
-    product.productNumber = productForm.value.prodid;
+    product.ProductName = productForm.value.name;
+    product.ProductNumber = productForm.value.prodid;
 
     this.service.addProduct(product).subscribe((response) => {console.log(response); this.ngOnInit()})
   }

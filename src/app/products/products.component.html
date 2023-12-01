@@ -1,1 +1,26 @@
 <p></p>
+
+<p>Products works!</p>
+
+<ul role="list">
+  <li *ngFor="let product of data">
+    Product: {{product.productName}}
+    <button type="button"(click)="deleteProduct(product.id)">Delete</button>
+  </li>
+</ul>
+
+<div>
+  <form #productForm="ngForm" (ngSubmit)="onSubmit(productForm)">
+
+    <label>Add product name: </label>
+    <input type="text" id="id" name="name" ngModel>
+    <br>
+
+    <label>Add product number: </label>
+    <input type="text" id="id2" name="prodid" ngModel>
+    <br>
+
+    <button type="submit">Add</button>
+  </form>
+</div>
+

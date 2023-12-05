@@ -20,8 +20,6 @@ export class IngredientsComponent implements OnInit{
     this.service.getIngredients().subscribe(data => this.data = data);
   }
 
-
-
   onSubmit(ingredientForm: NgForm) {
     let ingredient = new IngredientModel();
     ingredient.name = ingredientForm.value.name;

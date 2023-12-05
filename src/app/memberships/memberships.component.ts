@@ -10,12 +10,17 @@ import {MembershipModel} from "./Membership.Model";
   styleUrls: ['./memberships.component.css']
 })
 export class MembershipsComponent{
-
+mId!: string;
+data: any;
 
 
   constructor(private service: MembershipService) {
   }
 
+  getMembership(getForm: any){
+    this.mId = getForm.value.memid;
+    this.service.getMembership(this.mId).subscribe(data => this.data = data);
+  }
 
   onSubmit(memebershipForm: any) {
     console.log(memebershipForm.value.name);

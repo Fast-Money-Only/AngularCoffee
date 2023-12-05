@@ -12,13 +12,14 @@ import { MembershipsComponent } from './memberships/memberships.component';
 import { OrdersComponent } from './orders/orders.component';
 import { PostsComponent } from './posts/posts.component';
 import { ProductsComponent } from './products/products.component';
-import {FormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {HttpClientModule} from "@angular/common/http";
 import {AppRoutingModule} from "./app-routing.module";
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import {MatCardModule} from "@angular/material/card";
 import {MatButtonModule} from "@angular/material/button";
 import { CustomCoffeeComponent } from './custom-coffee/custom-coffee.component';
+import {MatInputModule} from "@angular/material/input";
 
 @NgModule({
   declarations: [
@@ -42,7 +43,9 @@ import { CustomCoffeeComponent } from './custom-coffee/custom-coffee.component';
         HttpClientModule,
         NoopAnimationsModule,
         MatCardModule,
-        MatButtonModule
+        MatButtonModule,
+        MatInputModule,
+        ReactiveFormsModule
     ],
   providers: [],
   bootstrap: [AppComponent]

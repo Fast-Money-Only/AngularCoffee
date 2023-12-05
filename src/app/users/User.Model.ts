@@ -1,4 +1,5 @@
 import {Guid} from "guid-typescript";
+import {MembershipModel} from "../memberships/Membership.Model";
 
 export class UserModel {
     id: string = Guid.create().toString();
@@ -8,4 +9,5 @@ export class UserModel {
     phone: string = "";
     password: string = "";
     membershipId: string = "4d07ca7e-aa29-456f-8808-27ea0dcfe096"; //Id fra customer
+    membership: MembershipModel = new MembershipModel();
 }

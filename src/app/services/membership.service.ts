@@ -13,7 +13,7 @@ export class MembershipService {
   constructor(private http: HttpClient) { }
 
   getMembership(id: string): Observable<Object>{
-    return this.http.get(this.baseUrl + id);
+    return this.http.get(this.baseUrl + "/" + id);
   }
 
   createMembership(membership: MembershipModel): Observable<any>{

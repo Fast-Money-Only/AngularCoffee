@@ -1,5 +1,20 @@
 <p>memberships works!</p>
 
+<form #getForm="ngForm" (ngSubmit)="getMembership(getForm)">
+
+  <label>Find membership by id: </label>
+  <input type="text"  name="memid" ngModel>
+  <br>
+  <button type="submit">Find</button>
+</form>
+
+<div class="gridDisplay">
+  <mat-card>
+    <mat-card-header>
+      <mat-card-subtitle>{{data.title}}</mat-card-subtitle>
+    </mat-card-header>
+  </mat-card>
+</div>
 <form #membershipForm="ngForm" (ngSubmit)="onSubmit(membershipForm)">
 
   <label>Add new membership type: </label>

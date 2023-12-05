@@ -33,7 +33,7 @@ export class UserService {
   }
 
   getUserOrders(id: string): Observable<Object>{
-    return this.http.get(this.baseUrl + "/GetUserOrders/" + id);
+    return this.http.get("http://localhost:5056/api/Order/GetUserOrders/" + id);
   }
 
 
